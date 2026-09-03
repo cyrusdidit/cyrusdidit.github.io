@@ -16,40 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  const projectVideos = document.querySelectorAll('.project-video');
-  projectVideos.forEach((video) => {
-    let isHovered = false;
-
-    const playVideo = () => {
-      video.play().catch(() => {});
-    };
-
-    const pauseVideo = () => {
-      video.pause();
-      video.currentTime = 0;
-    };
-
-    video.addEventListener('mouseenter', () => {
-      isHovered = true;
-      playVideo();
-    });
-
-    video.addEventListener('mouseleave', () => {
-      isHovered = false;
-      if (document.fullscreenElement !== video) {
-        pauseVideo();
-      }
-    });
-
-    video.addEventListener('fullscreenchange', () => {
-      if (document.fullscreenElement === video) {
-        playVideo();
-      } else if (!isHovered) {
-        pauseVideo();
-      }
-    });
-  });
-
   const scrollRevealItems = document.querySelectorAll('.scroll-reveal');
   const revealObserver = new IntersectionObserver(
     (entries, observer) => {
